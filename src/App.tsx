@@ -341,7 +341,7 @@ function App() {
               <>
 
                 {/* カテゴリ別 */}
-                {categories.map((category) => (
+                {categories.filter(c => c.tools.length > 0).map((category) => (
                   <Section
                     key={category.id}
                     title={category.name}
