@@ -1,8 +1,8 @@
-import { useState, useMemo, useEffect } from 'react'
-import { categories, quickAccessTools, rankingTools, newTools } from './data/tools'
+import { useEffect, useMemo, useState } from 'react'
+import './App.css'
 import { Section } from './components/Section'
 import { ToolGrid } from './components/ToolGrid'
-import './App.css'
+import { categories } from './data/tools'
 
 function SearchIcon() {
   return (
@@ -82,46 +82,6 @@ function MenuIcon() {
   )
 }
 
-function HistoryIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-      <path d="M3 3v5h5" />
-      <path d="M12 7v5l4 2" />
-    </svg>
-  )
-}
-
-function TrashIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="12"
-      height="12"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M10 11v6M14 11v6M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-    </svg>
-  )
-}
-
 function XIcon() {
   return (
     <svg
@@ -163,6 +123,30 @@ function RocketIcon() {
   )
 }
 
+function ShareIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="18" cy="5" r="3" />
+      <circle cx="6" cy="12" r="3" />
+      <circle cx="18" cy="19" r="3" />
+      <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
+      <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
+    </svg>
+  )
+}
+
+
 type Theme = 'light' | 'dark'
 
 function App() {
@@ -181,6 +165,23 @@ function App() {
   }, [theme])
 
   const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+
+  const handleShare = async () => {
+    const title = 'Tools - 無料で使える便利ツールリンク集'
+    const url = window.location.href
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url })
+      } catch (err) {
+        console.error('Share failed', err)
+      }
+    } else {
+      window.open(
+        `https://x.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
+        '_blank'
+      )
+    }
+  }
 
   const allTools = useMemo(() => categories.flatMap((c) => c.tools), [])
 
@@ -225,7 +226,7 @@ function App() {
             <div className="logo-group">
               <a className="logo-link" href="/">
                 <img
-                  alt="Toolpods"
+                  alt="Links"
                   src="https://static.toolpods.io/toolpods140.webp"
                   className="logo-img"
                   width={48}
@@ -234,16 +235,16 @@ function App() {
               </a>
               <div className="logo-text">
                 <div className="logo-name">
-                  <a href="/">ツールポッド</a>
+                  <a href="/">Links</a>
                 </div>
                 <div className="logo-by">
                   <a href="/" className="logo-by-link">
-                    by toolpods
+                    by Novare Orbis
                   </a>
                 </div>
               </div>
             </div>
-            <p className="header-tagline">無料で使える便利ツール集</p>
+            <p className="header-tagline">無料で使える便利ツールまとめ</p>
           </div>
 
           {/* デスクトップ右側 */}
@@ -256,8 +257,12 @@ function App() {
             >
               {theme === 'light' ? <SunIcon /> : <MoonIcon />}
             </button>
-            <button className="btn-outline" id="login-btn">
-              ログイン
+            <button
+              className="icon-btn"
+              onClick={handleShare}
+              aria-label="シェアする"
+            >
+              <ShareIcon />
             </button>
           </div>
 
@@ -281,8 +286,9 @@ function App() {
             {theme === 'light' ? <SunIcon /> : <MoonIcon />}
             <span style={{ marginLeft: 8 }}>{theme === 'light' ? 'ライトモード' : 'ダークモード'}</span>
           </button>
-          <button className="btn-outline" style={{ width: '100%' }}>
-            ログイン
+          <button className="icon-btn" onClick={handleShare} aria-label="シェアする">
+            <ShareIcon />
+            <span style={{ marginLeft: 8 }}>シェアする</span>
           </button>
         </div>
       )}
@@ -333,37 +339,6 @@ function App() {
 
             {!searchQuery.trim() && (
               <>
-                {/* クイックアクセス */}
-                <Section
-                  icon={<HistoryIcon />}
-                  title="クイックアクセス"
-                  rightAction={
-                    <button className="text-btn">
-                      <TrashIcon />
-                      履歴をクリア
-                    </button>
-                  }
-                >
-                  <ToolGrid tools={quickAccessTools} />
-                </Section>
-
-                {/* 人気ツールランキング */}
-                <Section
-                  title="🏆 人気ツールランキング"
-                  subtitle="最近よく使われているツールのランキングです"
-                  rightLink={{ href: '/popular-tools', label: '全てのランキングを見る →' }}
-                >
-                  <ToolGrid tools={rankingTools} ranked />
-                </Section>
-
-                {/* 新着・更新 */}
-                <Section
-                  title="✨ 新着・更新"
-                  subtitle="最近追加・更新されたツール"
-                  rightLink={{ href: '/release-notes', label: 'リリースノートを見る →' }}
-                >
-                  <ToolGrid tools={newTools} />
-                </Section>
 
                 {/* カテゴリ別 */}
                 {categories.map((category) => (
@@ -384,7 +359,7 @@ function App() {
       {/* フッター */}
       <footer className="footer">
         <div className="footer-inner">
-          <p className="footer-text">© 2024 Toolpods. 無料で使える便利ツール集。</p>
+          <p className="footer-text">© 2026 Links. 無料で使える便利ツールリンク集。</p>
         </div>
       </footer>
     </div>

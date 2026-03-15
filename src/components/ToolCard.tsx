@@ -14,7 +14,7 @@ export function ToolCard({ tool, rank }: ToolCardProps) {
           <span>{rank}</span>
         </div>
       )}
-      <a className="tool-card" href={tool.href}>
+      <a className="tool-card" href={tool.href} target="_blank" rel="noopener noreferrer">
         {tool.isNew && (
           <div className="badge-container">
             <div className="new-badge">
@@ -31,7 +31,13 @@ export function ToolCard({ tool, rank }: ToolCardProps) {
         <div className="tool-card-inner">
           <div>
             <div className="tool-card-header">
-              <div className="tool-emoji">{tool.emoji}</div>
+              <div className="tool-emoji">
+                {tool.emoji.startsWith('http') || tool.emoji.startsWith('/') ? (
+                  <img src={tool.emoji} alt="" className="tool-emoji-img" />
+                ) : (
+                  tool.emoji
+                )}
+              </div>
               <h4 className="tool-name">{tool.name}</h4>
             </div>
             {tool.updateNote ? (
