@@ -201,19 +201,19 @@ export const categories: Category[] = [
     description: '政府関連のサービス',
     tools: [
       {
-        id: 'e-tenkyo',
-        emoji: 'https://www.google.com/s2/favicons?domain=lp.jpetn.pf.japanpost.jp&sz=128',
-        name: 'e転居',
-        description: 'e転居',
-        href: 'https://lp.jpetn.pf.japanpost.jp/?utm_source=web&utm_medium=link&utm_campaign=jpetn_guide',
-        tags: [{ label: '政府・行政', color: 'green' }],
-      },
-      {
         id: 'myna',
         emoji: 'https://www.google.com/s2/favicons?domain=myna.go.jp&sz=128',
         name: 'マイナポータル',
         description: 'マイナポータル',
         href: 'https://myna.go.jp/',
+        tags: [{ label: '政府・行政', color: 'green' }],
+      },
+      {
+        id: 'e-tenkyo',
+        emoji: 'https://www.google.com/s2/favicons?domain=lp.jpetn.pf.japanpost.jp&sz=128',
+        name: 'e転居',
+        description: 'e転居',
+        href: 'https://lp.jpetn.pf.japanpost.jp/?utm_source=web&utm_medium=link&utm_campaign=jpetn_guide',
         tags: [{ label: '政府・行政', color: 'green' }],
       },
       {
