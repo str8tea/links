@@ -204,10 +204,10 @@ function App() {
         <header className="header">
           <div className="header-left">
             <div className="logo-group">
-              <a className="logo-link" href="/">
+              <a className="logo-link" href={import.meta.env.BASE_URL}>
                 <img
                   alt="Links"
-                  src="/links_icon.png"
+                  src={`${import.meta.env.BASE_URL}links_icon.png`}
                   className="logo-img"
                   width={48}
                   height={48}
@@ -215,10 +215,10 @@ function App() {
               </a>
               <div className="logo-text">
                 <div className="logo-name">
-                  <a href="/">Links</a>
+                  <a href={import.meta.env.BASE_URL}>Links</a>
                 </div>
                 <div className="logo-by">
-                  <a href="/" className="logo-by-link">
+                  <a href={import.meta.env.BASE_URL} className="logo-by-link">
                     by Novare Orbis
                   </a>
                 </div>
