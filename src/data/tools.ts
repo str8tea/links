@@ -28,137 +28,6 @@ export interface Category {
   tools: Tool[]
 }
 
-export const quickAccessTools: Tool[] = [
-  {
-    id: 'tapping-speed-test',
-    emoji: '👆',
-    name: '連打力測定',
-    description: '指定時間内にどれだけ素早くボタンを連打できるかを測定するゲームです。',
-    href: '/tapping-speed-test',
-    tags: [{ label: 'ゲーム', color: 'orange' }],
-  },
-  {
-    id: 'image-resize',
-    emoji: '🖼️',
-    name: '画像リサイズ・圧縮',
-    description: '画像のサイズ・画質を自由に変更できます。',
-    href: '/image-resize',
-    tags: [
-      { label: 'クリエイティブ', color: 'pink' },
-      { label: 'ビジネス', color: 'blue' },
-    ],
-  },
-]
-
-export const rankingTools: Tool[] = [
-  {
-    id: 'tetris',
-    emoji: '🧱',
-    name: 'テトリス',
-    description: 'ブロックを回転させて隙間なく埋める定番の落ち物パズルゲーム。レベルが上がるごとに速度アップ！',
-    href: '/tetris',
-    tags: [{ label: 'ゲーム', color: 'orange' }],
-  },
-  {
-    id: 'tapping-speed-test-rank',
-    emoji: '👆',
-    name: '連打力測定',
-    description: '指定時間内にどれだけ素早くボタンを連打できるかを測定するゲームです。',
-    href: '/tapping-speed-test',
-    tags: [{ label: 'ゲーム', color: 'orange' }],
-  },
-  {
-    id: 'reaction-time-test',
-    emoji: '⚡',
-    name: '反射神経測定',
-    description: 'あなたの反射神経の速さを測定し、動物と比較できます。',
-    href: '/reaction-time-test',
-    tags: [{ label: 'ゲーム', color: 'orange' }],
-  },
-  {
-    id: 'toolpods-dash',
-    emoji: '🤖',
-    name: 'ツールくんダッシュ',
-    description: '障害物を避けながら走るツールくんのランナーゲーム。スペースキーかタップでジャンプ！どこまで走れるかな？',
-    href: '/toolpods-dash',
-    tags: [{ label: 'ゲーム', color: 'orange' }],
-  },
-  {
-    id: 'ai-keigo-rank',
-    emoji: '🙇',
-    name: 'AI敬語',
-    description: '文章を適切な敬語に変換します。',
-    href: '/ai-keigo',
-    tags: [
-      { label: 'AI', color: 'green' },
-      { label: 'ビジネス', color: 'blue' },
-    ],
-  },
-]
-
-export const newTools: Tool[] = [
-  {
-    id: 'sudoku',
-    emoji: '🔢',
-    name: 'ナンプレ（数独）',
-    description: 'ナンプレ（数独）を無料でプレイ。3段階の難易度、メモ機能、ヒント機能付き。ブラウザですぐ遊べます。',
-    href: '/sudoku',
-    tags: [{ label: 'ゲーム', color: 'orange' }],
-    isNew: true,
-  },
-  {
-    id: 'image-crop',
-    emoji: '✂️',
-    name: '画像トリミング',
-    description: '矢印キーで1px単位の微調整ができるようにしました',
-    href: '/image-crop',
-    tags: [
-      { label: 'クリエイティブ', color: 'pink' },
-      { label: 'ビジネス', color: 'blue' },
-    ],
-    isUpdated: true,
-    updateNote: {
-      request: 'トリミングを細かくやりたい',
-      change: '矢印キーで1px単位の微調整ができるようにしました',
-    },
-  },
-  {
-    id: 'minesweeper',
-    emoji: '💣',
-    name: 'マインスイーパー',
-    description: '地雷を避けてすべてのマスを開くパズルゲーム。初級・中級・上級の3段階。タイマー・フラグ・一括オープン対応。',
-    href: '/minesweeper',
-    tags: [{ label: 'ゲーム', color: 'orange' }],
-    isNew: true,
-  },
-  {
-    id: 'reversi',
-    emoji: '⚫',
-    name: 'リバーシ',
-    description: '先攻（黒）/後攻（白）を選べるようにしました',
-    href: '/reversi',
-    tags: [{ label: 'ゲーム', color: 'orange' }],
-    isUpdated: true,
-    updateNote: {
-      request: '後攻もやりたい',
-      change: '先攻（黒）/後攻（白）を選べるようにしました',
-    },
-  },
-  {
-    id: 'reversi2',
-    emoji: '⚫',
-    name: 'リバーシ',
-    description: 'CPUを全体的に弱くして、5段階のレベルにしました',
-    href: '/reversi',
-    tags: [{ label: 'ゲーム', color: 'orange' }],
-    isUpdated: true,
-    updateNote: {
-      request: 'つよいからハンデをしてほしい',
-      change: 'CPUを全体的に弱くして、5段階のレベルにしました',
-    },
-  },
-]
-
 export const categories: Category[] = [
   {
     id: 'business',
@@ -269,32 +138,21 @@ export const categories: Category[] = [
       },
       {
         id: 'qr-code',
-        emoji: '📱',
-        name: 'QRコード生成',
+        emoji: 'https://43koke89.user.webaccel.jp/images2/icon_images/sample/QR_Code_1571986782.png',
+        name: 'QRコード生成（QRのススメ）',
         description: 'QRコードを生成します。',
-        href: '/qr-code',
+        href: 'https://qr.quel.jp/',
         tags: [
           { label: 'ビジネス', color: 'blue' },
           { label: 'クリエイティブ', color: 'pink' },
         ],
       },
       {
-        id: 'pdf-merge',
-        emoji: '📎',
-        name: 'PDF結合',
-        description: '複数のPDFファイルを1つに結合します。',
-        href: '/pdf-merge',
-        tags: [
-          { label: 'ドキュメント', color: 'indigo' },
-          { label: 'ビジネス', color: 'blue' },
-        ],
-      },
-      {
-        id: 'pdf-split',
-        emoji: '✂️',
-        name: 'PDF分割',
-        description: 'PDFファイルを複数のファイルに分割します。',
-        href: '/pdf-split',
+        id: 'pdf-edit',
+        emoji: 'https://www.ilovepdf.com/img/ilovepdf.svg',
+        name: 'PDF編集（iLovePDF）',
+        description: 'PDFファイルを編集します。',
+        href: 'https://www.ilovepdf.com/ja',
         tags: [
           { label: 'ドキュメント', color: 'indigo' },
           { label: 'ビジネス', color: 'blue' },
